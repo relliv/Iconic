@@ -1,0 +1,104 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- #region White -->
+    
+    <Color x:Key="White">#fefefe</Color>
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+    
+    <Color x:Key="SnowWhite">#f5fefd</Color>
+    <SolidColorBrush x:Key="SnowWhiteBrush" Color="{StaticResource SnowWhite}"/>
+
+    <!-- #endregion -->
+
+    <!-- #region Grey And Black -->
+    
+    <Color x:Key="SoftBlueGrey">#f6f4fc</Color>
+    <SolidColorBrush x:Key="SoftBlueGreyBrush" Color="{StaticResource SoftBlueGrey}"/>
+    
+    <Color x:Key="LightGrey">#d5dae6</Color>
+    <SolidColorBrush x:Key="LightGreyBrush" Color="{StaticResource LightGrey}"/>
+    
+    <Color x:Key="Grey">#c3c2ca</Color>
+    <SolidColorBrush x:Key="GreyBrush" Color="{StaticResource Grey}"/>
+
+    <Color x:Key="DarkGrey">#8a8aa6</Color>
+    <SolidColorBrush x:Key="DarkGreyBrush" Color="{StaticResource DarkGrey}"/>
+
+    <Color x:Key="Spruce">#2b3f4a</Color>
+    <SolidColorBrush x:Key="SpruceBrush" Color="{StaticResource Spruce}"/>
+
+    <Color x:Key="Black">#121122</Color>
+    <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
+
+    <!-- #endregion -->
+
+    <!-- #region Blue -->
+    
+    <Color x:Key="Blue">#3a63ee</Color>
+    <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}"/>
+
+    <Color x:Key="SoftBlue">#5e7ef5</Color>
+    <SolidColorBrush x:Key="SoftBlueBrush" Color="{StaticResource SoftBlue}"/>
+
+    <Color x:Key="LigthBlue">#6b8cf7</Color>
+    <SolidColorBrush x:Key="LightBlueBrush" Color="{StaticResource LigthBlue}"/>
+
+    <Color x:Key="LigthBlue2">#5F81F0</Color>
+    <SolidColorBrush x:Key="LightBlueBrush2" Color="{StaticResource LigthBlue2}"/>
+
+    <Color x:Key="Celuran">#0391c2</Color>
+    <SolidColorBrush x:Key="CeluranBrush" Color="{StaticResource Celuran}"/>
+
+    <Color x:Key="Sky">#61c5da</Color>
+    <SolidColorBrush x:Key="SkyBrush" Color="{StaticResource Sky}"/>
+
+    <Color x:Key="Sapphire">#52b1c0</Color>
+    <SolidColorBrush x:Key="SapphireBrush" Color="{StaticResource Sapphire}"/>
+
+    <!-- #endregion -->
+
+    <!-- #region Red -->
+
+    <Color x:Key="Red">#d0312d</Color>
+    <SolidColorBrush x:Key="RedBrush" Color="{StaticResource Red}"/>
+
+    <Color x:Key="SoftRed">#bc5449</Color>
+    <SolidColorBrush x:Key="SoftRedBrush" Color="{StaticResource SoftRed}"/>
+
+    <Color x:Key="Tomato">#f45652</Color>
+    <SolidColorBrush x:Key="TomatoBrush" Color="{StaticResource Tomato}"/>
+
+
+    <Color x:Key="SoftPurple">#605be1</Color>
+    <SolidColorBrush x:Key="SoftPurpleBrush" Color="{StaticResource SoftPurple}"/>
+
+    <Color x:Key="Purple">#6138d5</Color>
+    <SolidColorBrush x:Key="PurpleBrush" Color="{StaticResource Purple}"/>
+
+    <Color x:Key="Green">#2fa545</Color>
+    <SolidColorBrush x:Key="GreenBrush" Color="{StaticResource Green}"/>
+
+    <Color x:Key="LightGreen">#4FCB5F</Color>
+    <SolidColorBrush x:Key="LightGreenBrush" Color="{StaticResource LightGreen}"/>
+
+    <Color x:Key="Yellow">#d1ac43</Color>
+    <SolidColorBrush x:Key="YellowBrush" Color="{StaticResource Yellow}"/>
+
+    <Color x:Key="LightYellow">#EBB71A</Color>
+    <SolidColorBrush x:Key="LightYellowBrush" Color="{StaticResource LightYellow}"/>
+
+
+    <!-- #endregion -->
+
+    <LinearGradientBrush x:Key="BluePurpleGradientBrush" StartPoint="0.5,0" EndPoint="1,1">
+        <GradientStop Color="#6388ee" Offset="0" />
+        <GradientStop Color="#627eeb" Offset="0.1" />
+        <GradientStop Color="#606ce6" Offset="0.2" />
+        <GradientStop Color="#615ce3" Offset="0.3" />
+        <GradientStop Color="#5f56e0" Offset="0.4" />
+        <GradientStop Color="#5e43da" Offset="0.6" />
+        <GradientStop Color="#6438d6" Offset="1" />
+    </LinearGradientBrush>
+
+</ResourceDictionary>
