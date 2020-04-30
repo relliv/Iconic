@@ -35,7 +35,29 @@ namespace Iconic.Migrations
                     b.ToTable("AppSettings");
                 });
 
-            modelBuilder.Entity("Iconic.Models.Icon.Icon", b =>
+            modelBuilder.Entity("Iconic.Models.Color.Entities.ColorPalette", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Color1");
+
+                    b.Property<string>("Color2");
+
+                    b.Property<string>("Color3");
+
+                    b.Property<string>("Color4");
+
+                    b.Property<string>("Color5");
+
+                    b.Property<int>("PaletteNumber");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ColorPalettes");
+                });
+
+            modelBuilder.Entity("Iconic.Models.Icon.Entities.Icon", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -62,37 +84,7 @@ namespace Iconic.Migrations
                     b.ToTable("Icons");
                 });
 
-            modelBuilder.Entity("Iconic.Models.Icon.IconTag", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<long>("IconId");
-
-                    b.Property<long>("TagId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IconTags");
-                });
-
-            modelBuilder.Entity("Iconic.Models.Icon.Tag", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("GUId")
-                        .IsRequired();
-
-                    b.Property<string>("TagName")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
-                });
-
-            modelBuilder.Entity("Iconic.Models.User.User", b =>
+            modelBuilder.Entity("Iconic.Models.User.Entities.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();

@@ -7,7 +7,6 @@ using System.Windows.Threading;
 using Iconic.Data;
 using Iconic.Dialogs;
 using Iconic.ViewModel;
-using Iconic.Helpers;
 using static Iconic.DI.DI;
 
 namespace Iconic
@@ -26,13 +25,11 @@ namespace Iconic
         {
             base.OnStartup(e);
 
-            new IconImporter();
-
             _ = new AppDbContext();
 
             ApplicationSetup();
 
-            ViewModelApplication.GoToPage(ApplicationPage.Icons);
+            ViewModelApplication.GoToPage(ApplicationPage.WelcomePage);
 
             Current.MainWindow = new MainWindow();
             Current.MainWindow.DataContext = new WindowViewModel(Current.MainWindow);

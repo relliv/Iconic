@@ -22,6 +22,7 @@
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converters:BoolToReverseVisibilityConverter x:Key="BoolToReverseVisibilityConverter" />
             <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+            <converters:NullBrushConverter x:Key="NullBrushConverter" />
 
             <!-- Resource Dictionaries -->
             <ResourceDictionary.MergedDictionaries>
@@ -49,6 +50,7 @@
 
 
                 <ResourceDictionary Source="pack://application:,,,/UI/DataTemplates/CommonDataTemplates.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/DataTemplates/ColorDataTemplates.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/UI/DataTemplates/IconDataTemplates.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/UI/DataTemplates/UserDataTemplates.xaml" />
 

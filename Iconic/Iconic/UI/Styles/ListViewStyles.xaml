@@ -15,7 +15,6 @@
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
-
         <!-- Base Template -->
         <Setter Property="Template">
             <Setter.Value>

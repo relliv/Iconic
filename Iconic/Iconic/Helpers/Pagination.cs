@@ -1,5 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Iconic.Models.Common;
+using Iconic.Models.Common.Enums;
+using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Iconic.Helpers
@@ -7,6 +9,17 @@ namespace Iconic.Helpers
     // source : https://jasonwatmore.com/post/2018/10/17/c-pure-pagination-logic-in-c-aspnet
     public class Pagination
     {
+        public int TotalItems { get; set; }
+        public int CurrentPage { get; set; }
+        public int PageSize { get; set; }
+        public int TotalPages { get; set; }
+        public int StartPage { get; set; }
+        public int EndPage { get; set; }
+        public int StartIndex { get; set; }
+        public int EndIndex { get; set; }
+
+        public ObservableCollection<Page> Pages { get; set; }
+
         /// <summary>
         /// Pagination class
         /// </summary>
@@ -16,6 +29,23 @@ namespace Iconic.Helpers
         /// <param name="maxPages">Page count for listing</param>
         public Pagination(int totalItems, int currentPage = 1, int pageLimit = 10, int maxPages = 10)
         {
+            Pages = new ObservableCollection<Page>();
+
+            if (currentPage >= (maxPages / 2))
+            {
+                Pages.Add(new Page
+                {
+                    PageNumber = 1,
+                    PageType = PageType.Start
+                });
+            }
+
+            Pages.Add(new Page
+            {
+                PageNumber = currentPage - 1 >= 1 ? currentPage - 1 : 1,
+                PageType = PageType.Previous
+            });
+
             // calculate total pages
             var totalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageLimit);
 
@@ -68,7 +98,41 @@ namespace Iconic.Helpers
             // create an array of pages that can be looped over
             var pages = Enumerable.Range(startPage, (endPage + 1) - startPage);
 
-            // update object instance with all pager properties required by the view
+            foreach (var page in pages)
+            {
+                if (page == currentPage)
+                {
+                    Pages.Add(new Page
+                    {
+                        PageNumber = page,
+                        PageType = PageType.Current
+                    });
+                }
+                else
+                {
+                    Pages.Add(new Page
+                    {
+                        PageNumber = page,
+                        PageType = PageType.Normal
+                    });
+                }
+            }
+
+            Pages.Add(new Page
+            {
+                PageNumber = currentPage + 1 <= endPage ? currentPage + 1 : endPage,
+                PageType = PageType.Next
+            });
+
+            if (currentPage <= (maxPages / 2) && currentPage != endPage)
+            {
+                Pages.Add(new Page
+                {
+                    PageNumber = totalPages,
+                    PageType = PageType.End
+                });
+            }
+
             TotalItems = totalItems;
             CurrentPage = currentPage;
             PageSize = pageLimit;
@@ -77,17 +141,6 @@ namespace Iconic.Helpers
             EndPage = endPage;
             StartIndex = startIndex;
             EndIndex = endIndex;
-            Pages = pages;
         }
-
-        public int TotalItems { get; private set; }
-        public int CurrentPage { get; private set; }
-        public int PageSize { get; private set; }
-        public int TotalPages { get; private set; }
-        public int StartPage { get; private set; }
-        public int EndPage { get; private set; }
-        public int StartIndex { get; private set; }
-        public int EndIndex { get; private set; }
-        public IEnumerable<int> Pages { get; private set; }
     }
 }

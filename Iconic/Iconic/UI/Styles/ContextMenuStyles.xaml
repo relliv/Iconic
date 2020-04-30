@@ -21,7 +21,7 @@
         <Setter Property="Opacity" Value=".95"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{StaticResource WhiteBrush}"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Foreground" Value="{StaticResource BlueGrey700Brush}" />
         <Style.Triggers>
             <Trigger Property="IsHighlighted" Value="True">
@@ -68,7 +68,15 @@
     <!--#region Menu Item (With Popup)-->
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
         <!-- Item Content -->
-        <Border Name="Border" VerticalAlignment="Stretch" MinHeight="35" BorderThickness="0 0 0 0" BorderBrush="{StaticResource BlackBrush}" Margin="1">
+        <Border Name="Border" 
+                VerticalAlignment="Stretch" 
+                MinHeight="35" 
+                BorderThickness="0 0 0 0" 
+                BorderBrush="{StaticResource BlackBrush}" 
+                Margin="5">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" Color="{StaticResource BlueGrey100}" Opacity=".3" ShadowDepth="0" Direction="0"/>
+            </Border.Effect>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
@@ -107,7 +115,10 @@
                        HorizontalOffset="5"
                        IsOpen="{TemplateBinding IsSubmenuOpen}"
                        AllowsTransparency="True" Focusable="False"
-                       PopupAnimation="Fade">
+                       PopupAnimation="Fade" Margin="5">
+                    <Popup.Effect>
+                        <DropShadowEffect BlurRadius="5" Color="{StaticResource BlueGrey100}" Opacity=".3" ShadowDepth="0" Direction="0"/>
+                    </Popup.Effect>
                     <!-- Base Border-->
                     <Border Name="SubmenuBorder"
                             SnapsToDevicePixels="True" Background="{StaticResource WhiteBrush}"
@@ -138,7 +149,15 @@
 
     <!--#region Menu Item (Without Popup)-->
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
-        <Border Name="Border" VerticalAlignment="Stretch" MinHeight="35" BorderThickness="0 0 0 0" BorderBrush="{StaticResource BlackBrush}" Margin="1">
+        <Border Name="Border" 
+                VerticalAlignment="Stretch" 
+                MinHeight="35" 
+                BorderThickness="0 0 0 0"
+                BorderBrush="{StaticResource BlackBrush}" 
+                Margin="5 2">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" Color="{StaticResource BlueGrey100}" Opacity=".3" ShadowDepth="0" Direction="0"/>
+            </Border.Effect>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
@@ -189,7 +208,7 @@
                 <Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="true">
-                <Setter TargetName="Border" Property="Background" Value="{StaticResource BlueGrey100Brush}" />
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource WhiteBrush}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground" Value="{StaticResource BlueGrey50Brush}" />

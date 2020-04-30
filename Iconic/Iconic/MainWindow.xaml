@@ -22,9 +22,18 @@
                       GlassFrameThickness="0"/>
     </WindowChrome.WindowChrome>
 
-    <pages:PageHost Grid.Row="1" 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Navbar/>
+
+        <pages:PageHost Grid.Row="1" 
                         CurrentPage="{Binding ApplicationViewModel.CurrentPage,
                                         Source={x:Static locator:ViewModelLocator.Instance}}"
                         CurrentPageViewModel="{Binding ApplicationViewModel.CurrentPageViewModel,
                                                 Source={x:Static locator:ViewModelLocator.Instance}}"/>
+    </Grid>
 </Window>

@@ -1,0 +1,16 @@
+﻿<local:BasePage x:TypeArguments="viewmodel:ColorsViewModel" x:Class="Iconic.UI.Pages.Colors"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:viewmodel="clr-namespace:Iconic.ViewModel.Color"
+      xmlns:local="clr-namespace:Iconic.UI.Pages"
+      mc:Ignorable="d">
+
+    <ListView Grid.Row="1"
+              ItemsSource="{Binding MaterialColorPalettes}"
+              ItemTemplate="{StaticResource MaterialColorPaletteDataTemplate}"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Stretch"
+              Tag="No Color Data"/>
+</local:BasePage>

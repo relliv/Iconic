@@ -5,99 +5,108 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Iconic.UI.Pages"
       xmlns:system="clr-namespace:System;assembly=mscorlib" 
-      xmlns:locator="clr-namespace:Iconic.ViewModel.Base"
-      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"                
+      xmlns:viewmodel="clr-namespace:Iconic.ViewModel.Icon"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       DataContext="{Binding IconsVM, Source={StaticResource Locator}}">
 
-    <TabControl>
-        <TabItem Header="Material Icons" 
-                 Tag="{Binding Source={StaticResource ArrangeSendToBack}, Path=Data}" RenderTransformOrigin="0.52,0.45">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
+        <!-- Search And Limit -->
+        <Grid IsEnabled="{Binding ElementName=IconItems, Path=HasItems}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
 
-                    <TextBox Text="{Binding SearchTerm}"
+            <TextBox Text="{Binding SearchTerm}"
                              Tag="Search an icon"
                              Height="35"
                              Margin="15 10">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="KeyUp">
-                                <i:InvokeCommandAction Command="{Binding SearchChangedCommand}" 
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="KeyUp">
+                        <i:InvokeCommandAction Command="{Binding SearchChangedCommand}" 
                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </TextBox>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
 
-                    <!-- Page limit -->
-                    <ComboBox Grid.Column="1" 
+            <!-- Page Limit -->
+            <ComboBox Grid.Column="1" 
                               VerticalAlignment="Center" 
                               SelectedItem="{Binding PageLimit}"
                               Height="35"
                               Margin="15 10">
-                        <ComboBox.ItemsSource>
-                            <x:Array Type="{x:Type system:Int32}">
-                                <system:Int32>25</system:Int32>
-                                <system:Int32>50</system:Int32>
-                                <system:Int32>75</system:Int32>
-                                <system:Int32>100</system:Int32>
-                                <system:Int32>150</system:Int32>
-                                <system:Int32>200</system:Int32>
-                                <system:Int32>250</system:Int32>
-                                <system:Int32>300</system:Int32>
-                                <system:Int32>500</system:Int32>
-                            </x:Array>
-                        </ComboBox.ItemsSource>
+                <ComboBox.ItemsSource>
+                    <x:Array Type="{x:Type system:Int32}">
+                        <system:Int32>25</system:Int32>
+                        <system:Int32>50</system:Int32>
+                        <system:Int32>75</system:Int32>
+                        <system:Int32>100</system:Int32>
+                        <system:Int32>150</system:Int32>
+                        <system:Int32>200</system:Int32>
+                        <system:Int32>250</system:Int32>
+                        <system:Int32>300</system:Int32>
+                        <system:Int32>500</system:Int32>
+                    </x:Array>
+                </ComboBox.ItemsSource>
 
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding PaginationChangedCommand}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </ComboBox>
-                </Grid>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding PaginationChangedCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+        </Grid>
+        
+        <!-- Icons -->
+        <ListView x:Name="IconsList" Grid.Row="1"
+                  Margin="10"
+                  ItemsSource="{Binding Icons}"
+                  ItemTemplate="{StaticResource IconDataTemplate}"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Stretch"
+                  Tag="No Icon Data"/>
 
-                <!-- IconItems -->
-                <ListView Grid.Row="1"
-                          Margin="10 20"
-                          ItemsSource="{Binding IconItems}"
-                          ItemTemplate="{StaticResource IconItemDataTemplate}"
-                          ScrollViewer.VerticalScrollBarVisibility="Auto"
-                          VerticalAlignment="Top"
-                          HorizontalAlignment="Stretch"
-                          Tag="There is no icon"/>
+        <!-- Pagination -->
+        <ListView Grid.Row="2"
+                  Height="45"
+                  Width="550"
+                  Margin="0"
+                  ItemsSource="{Binding Pagination.Pages}"
+                  ItemTemplate="{StaticResource PaginationItemDataTemplate}"
+                  Visibility="{Binding ElementName=IconsList, Path=HasItems, 
+                               Converter={StaticResource BoolToVisibilityConverter}}"
+                  ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
 
-                <!-- Pagination Pages -->
-                <ListView Grid.Row="2"
-                          Height="45"
-                          Width="550"
-                          Margin="15 5"
-                          ItemsSource="{Binding Pagination.Pages}"
-                          ItemTemplate="{StaticResource PaginationItemDataTemplate}"/>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Material Colors" 
-                 Tag="{Binding Source={StaticResource FormatColorFill}, Path=Data}">
-            <!-- ColorItems -->
-            <ListView Grid.Row="1"
-                      Margin="10 20"
-                      ItemsSource="{Binding ColorItems}"
-                      ItemTemplate="{StaticResource ColorItemDataTemplate}"
-                      ScrollViewer.VerticalScrollBarVisibility="Auto"
-                      VerticalAlignment="Top"
-                      HorizontalAlignment="Stretch"
-                      Tag="There is no color"/>
-        </TabItem>
-    </TabControl>
+        <!-- Import Status -->
+        <TextBlock Grid.Row="3" Margin="0"
+                   Text="{Binding ImportStatus}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+
+
+        <!-- Result Counts -->
+        <TextBlock Grid.Row="3"
+                   Foreground="{StaticResource Teal700Brush}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0 0 15 0">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0} of {1}">
+                    <Binding Path="Pagination.TotalItems"/>
+                    <Binding ElementName="IconsList" Path="Items.Count"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+    </Grid>
 
 </local:BasePage>

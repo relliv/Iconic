@@ -64,12 +64,7 @@ namespace Iconic.ViewModel
             };
 
 
-            Title = "Awesome App";
-
-            //Thread.CurrentThread.IsBackground = true;
-
-            //dialogServiceI = dialogService;
-            ShowDiaryWindowCommand = new RelayParameterizedCommand(parameter => ShowDiaryWindow(parameter));
+            Title = "Iconic";
         }
 
         #region Private Member
@@ -242,14 +237,6 @@ namespace Iconic.ViewModel
 
         #endregion
 
-
-        public ICommand ShowDiaryWindowCommand { get; }
-
-        public void ShowDiaryWindow(object parameter)
-        {
-
-        }
-
         public string Title { get; set; }
 
         /// <summary>
@@ -319,10 +306,5 @@ namespace Iconic.ViewModel
                 }));
             }
         }
-
-        //public object DisplayDate
-        //{
-        //    //get { throw new NotImplementedException(); }
-        //}
     }
 }

@@ -6,12 +6,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Iconic.Models.Icon.Entities;
 
 namespace Iconic.ViewModel.Icon
 {
     public class IconEditorViewModel : WindowViewModel
     {
-        public IconEditorViewModel(Window window, Models.Icon.Icon icon = null) : base(window)
+        public IconEditorViewModel(Window window, Models.Icon.Entities.Icon icon = null) : base(window)
         {
             Title = "";
             mWindow = window;
@@ -34,12 +35,12 @@ namespace Iconic.ViewModel.Icon
 
         #region Properties
 
-        public Models.Icon.Icon Icon { get; set; }
+        public Models.Icon.Entities.Icon Icon { get; set; }
         public Path Path { get; set; } = new Path();
         public Canvas Canvas { get; set; }
         public double CurrentSize { get; set; } = 24;
         public double MaximumSize { get; set; } = 250;
-        public Color SelectedColor { get; set; }
+        //public Color SelectedColor { get; set; }
 
         #endregion
 
@@ -52,21 +53,22 @@ namespace Iconic.ViewModel.Icon
         {
             Canvas = new Canvas();
 
-            var path = new Path();
-
-            path.Data = Geometry.Parse(Icon.Data);
-            path.Height = CurrentSize;
-            path.Width = CurrentSize;
-            path.Stretch = Stretch.Uniform;
-
-            if (SelectedColor.A == 0 && SelectedColor.R == 0 && SelectedColor.G == 0 && SelectedColor.B == 0)
+            var path = new Path
             {
-                path.Fill = new SolidColorBrush(Color.FromRgb(0,0,0));
-            }
-            else
-            {
-                path.Fill = new SolidColorBrush(SelectedColor);
-            }
+                Data = Geometry.Parse(Icon.Data),
+                Height = CurrentSize,
+                Width = CurrentSize,
+                Stretch = Stretch.Uniform
+            };
+
+            //if (SelectedColor.A == 0 && SelectedColor.R == 0 && SelectedColor.G == 0 && SelectedColor.B == 0)
+            //{
+            //    path.Fill = new SolidColorBrush(Color.FromRgb(0,0,0));
+            //}
+            //else
+            //{
+            //    path.Fill = new SolidColorBrush(SelectedColor);
+            //}
 
             Canvas.Children.Add(path);
         }

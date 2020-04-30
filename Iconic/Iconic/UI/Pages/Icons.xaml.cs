@@ -1,4 +1,6 @@
-﻿namespace Iconic.UI.Pages
+﻿using Iconic.ViewModel.Icon;
+
+namespace Iconic.UI.Pages
 {
     /// <summary>
     /// Interaction logic for Icons.xaml

@@ -8,7 +8,21 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid>
-        <TextBlock Text="Welcome Hermanos"/>
+    <Grid Background="{StaticResource WhiteBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Image Source="pack://application:,,,/Resources/undraw_elements_cipa.png"/>
+
+        <TextBlock Grid.Row="1" 
+                   Text="Iconic Supports Your Designs"
+                   Foreground="{StaticResource BlueGrey200Brush}"
+                   Margin="40 0 40 40"
+                   FontSize="30"
+                   FontWeight="Light"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
     </Grid>
 </local:BasePage>

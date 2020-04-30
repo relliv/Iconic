@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Iconic.Models.Icon
+namespace Iconic.Models.Icon.Entities
 {
     public class Icon : INotifyPropertyChanged
     {

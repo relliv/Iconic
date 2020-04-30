@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using Iconic.Data;
 using Iconic.Models.Common;
+using Iconic.ViewModel.Base;
 using System.ComponentModel;
 
 namespace Iconic.ViewModel.App
@@ -8,7 +9,7 @@ namespace Iconic.ViewModel.App
     /// <summary>
     /// The application state as a view model
     /// </summary>
-    public class ApplicationViewModel : ViewModelBase
+    public class ApplicationViewModel : BaseViewModel
     {
         public ApplicationViewModel()
         {
@@ -44,13 +45,6 @@ namespace Iconic.ViewModel.App
 
             if (!different)
                 OnPropertyChanged(nameof(CurrentPage));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
-
-        public void OnPropertyChanged(string name)
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
         #endregion

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Iconic.Models.User
+namespace Iconic.Models.User.Entities
 {
     public class User : INotifyPropertyChanged
     {

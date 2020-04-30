@@ -1,6 +1,8 @@
 ﻿using Iconic.Models.Common;
 using Iconic.UI.Pages;
 using Iconic.ViewModel.App;
+using Iconic.ViewModel.Color;
+using Iconic.ViewModel.Icon;
 
 namespace Iconic.Helpers
 {
@@ -24,6 +26,10 @@ namespace Iconic.Helpers
                     return new WelcomePage(viewModel as WelcomeViewModel);
                 case ApplicationPage.Icons:
                     return new Icons();
+                case ApplicationPage.Colors:
+                    return new Colors();
+                case ApplicationPage.Palettes:
+                    return new Palettes();
                 default:
                     // Debugger.Break();
                     return null;

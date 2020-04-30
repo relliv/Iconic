@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Iconic.UI.Pages.Base"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border Padding="20 40 15 25">
+    <Border Padding="20 20 20 30">
         <Grid>
             <ContentControl x:Name="OldPage" />
             <ContentControl x:Name="NewPage" />
