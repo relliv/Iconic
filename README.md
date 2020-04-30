@@ -17,7 +17,7 @@ Useful assets for developers and designers
 
 - <a href="https://materialdesignicons.com/">Material Icons</a>
 - <a href="https://material.io/design/color/the-color-system.html#tools-for-picking-colors">Material Colors</a>
-- <a href="https://github.com/Jam3/nice-color-palettes/"Color Palettes</a>
+- <a href="https://github.com/Jam3/nice-color-palettes/">Color Palettes</a>
 
 App Icon: 
 
